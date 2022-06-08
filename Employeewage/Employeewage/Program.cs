@@ -5,8 +5,8 @@
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to EmployeeWage");
-            DailyEmpWage employeepresent = new DailyEmpWage();
-            employeepresent.CheckDailyEmpWg();
+            PartTimeEmpWage employeepresent = new PartTimeEmpWage();
+            employeepresent.CheckPartTimeEmpWage();
 
 
         }
