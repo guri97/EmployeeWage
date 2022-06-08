@@ -6,39 +6,52 @@ using System.Threading.Tasks;
 
 namespace Employeewage
 {
-    public class SwitchCaseProb
+    public class CalculatingWagesForMonth
     {
+        public const float EmpWagePerHour = 20;
+
+        internal void CheckEmpPresentAbsent() { }
+        public const int FullTime_Working_Hours_PerDay = 8;
+        public const int PartTime_Working_Hours_perday = 4;
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
         public const int IS_ABSENT = 0;
-        int EmpDailyWage = 0;
-        public int EmpWage = 20;
+        public const int Num_WorkingDays_Per_Month = 20;
+        public float EmpMonthlyWage = 0;
+        float EmpDailyWage = 0;
 
-        public static int IsEmployeePresent()
+        public int IsEmployeePresent()
         {
-            return new Random().Next(0, 3);
+            return new Random().Next(0, 2);
         }
 
-        public void calculateEmpWage()
+
+        public void CalculateEmpWage()
         {
+            int DayNumber = 1;
             int EmpWorkingHours = 0;
-
-            switch (IsEmployeePresent())
+            while (DayNumber <= Num_WorkingDays_Per_Month)
             {
-                case IS_ABSENT:
-                    EmpWorkingHours = 0;
-                    break;
+                switch (IsEmployeePresent())
+                {
+                    case IS_ABSENT:
+                        EmpWorkingHours = 0;
+                        break;
 
-                case IS_PART_TIME:
-                    EmpWorkingHours = 4;
-                    break;
+                    case IS_PART_TIME:
+                        EmpWorkingHours = PartTime_Working_Hours_perday;
+                        break;
 
-                case IS_FULL_TIME:
-                    EmpWorkingHours = 8;
-                    break;
+                    case IS_FULL_TIME:
+                        EmpWorkingHours = FullTime_Working_Hours_PerDay;
+                        break;
+                }
+                EmpDailyWage = EmpWorkingHours * EmpWagePerHour;
+
+                EmpMonthlyWage += EmpDailyWage;
+                DayNumber++;
             }
-            EmpDailyWage = EmpWorkingHours * EmpWage;
-            Console.WriteLine("Total Employee Wage = {0}", EmpDailyWage);
+            Console.WriteLine("Employee Monthly Wage = {0}", EmpMonthlyWage);
         }
     }
 }
