@@ -5,8 +5,8 @@
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to EmployeeWage");
-            CalculatingWagesForMonth employeepresent = new CalculatingWagesForMonth();
-            employeepresent.CheckEmpPresentAbsent();
+            EmployeeWage employeepresent = new EmployeeWage();
+            employeepresent.CalculateEmpWage();
 
 
         }
